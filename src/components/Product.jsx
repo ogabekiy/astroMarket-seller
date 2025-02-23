@@ -131,7 +131,7 @@ export default function DashboardProducts({ status }) {
   const closeEditModal = () => {
     setIsEditModalOpen(false);
     setSelectedProduct(null);
-    refetch(); // Refresh data after editing
+    refetch(); 
   };
 
   useEffect(() => {
@@ -206,9 +206,7 @@ export default function DashboardProducts({ status }) {
                 </TableCell>
                 <TableCell>
                   <div className="flex gap-2">
-                    
-                          <EditProductModal productId={product.id} />
-
+                    <EditProductModal productId={product.id} />
                     <Button
                       variant="destructive"
                       size="sm"
@@ -224,7 +222,6 @@ export default function DashboardProducts({ status }) {
         </Table>
       </div>
 
-      {/* Image Modal */}
       {isModalOpen && selectedImages.length > 0 && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-4 rounded-lg max-w-3xl w-full">
@@ -281,6 +278,9 @@ export default function DashboardProducts({ status }) {
       )}
 
       {/* Add Product Modal */}
+      {isAddModalOpen && (
+        <AddProduct onClose={() => setIsAddModalOpen(false)} />
+      )}
     </div>
   );
 }
